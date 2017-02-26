@@ -1,27 +1,35 @@
-# Spotiapp
+# SpotiApp
+[![N|Solid](http://www.sheerid.com/wp-content/themes/sheerid/img/ppc/spotify.jpg)](https://www.spotify.com/ar/)
+Todo: spotify services in angular2
+Ref: developer.spotify.com | https://developer.spotify.com/web-api/console/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
+### Tech
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Open source projects used:
 
-## Code scaffolding
+* [Angular 2] - [One framework. Mobile & desktop](https://angular.io/)
+* [Bootstrap 4] - [HTML, CSS, and JS framework](https://v4-alpha.getbootstrap.com/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Setup
 
-## Build
+```sh
+$ git clone
+$ cd spotiapp
+$ npm install
+$ ng serve
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Angular CLI
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.17.
+Any problem?
+!!! Need node version 6 or upper
 
-## Running unit tests
+```sh
+$ sudo npm uninstall -g angular-cli @angular/cli
+$ sudo npm uninstall --save-dev angular-cli
+$ sudo npm cache clean
+$ sudo npm install -g @angular/cli@latest
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Deploying to Github Pages
+Run `ng github-pages:deploy` to deploy to Github Pages.
