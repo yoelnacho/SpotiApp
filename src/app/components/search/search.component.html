@@ -19,7 +19,9 @@
 
         <div class="col-md-9">
             <div class="row">
-                <div class="col-md-3" *ngFor="let artista of _spotifyService.artistas">
+                <div class="col-md-3"
+                    *ngFor="let artista of _spotifyService.artistas"
+                    [routerLink]="['/artista', artista.id]">
 
                     <!-- si existe la url mostrar image -->
                     <img [src]="artista.images | sinfoto"

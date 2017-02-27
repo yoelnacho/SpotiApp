@@ -1,5 +1,6 @@
 # SpotiApp
 [![N|Solid](http://www.sheerid.com/wp-content/themes/sheerid/img/ppc/spotify.jpg)](https://www.spotify.com/ar/)
+
 Todo: spotify services in angular2
 Ref: developer.spotify.com | https://developer.spotify.com/web-api/console/
 

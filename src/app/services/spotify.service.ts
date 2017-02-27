@@ -8,10 +8,11 @@ import 'rxjs';
 export class SpotifyService {
     artistas: any[] = [];
     urlSpotify:string = "https://api.spotify.com/v1/search";
+    urlSpotifyArtist:string = "https://api.spotify.com/v1/artists";
 
     constructor(private _http:Http) { }
 
-    // obtener el artista url completa del servicio debe ser:
+    // obtener listado de artistas url completa del servicio debe ser:
     // "https://api.spotify.com/v1/search?q=metallica&type=artist"
     // la primera parte se encuentra en urlSpotify y la consulta en query
     getArtistas(termino: string) {
@@ -27,9 +28,7 @@ export class SpotifyService {
                 .map( res => {
                 // obtener todo
                     // console.log(res);
-                // para obtener solo el body
-                    // console.log(res.json());
-                // obtener solos los items de artistas
+                // de todo el arreglo, solo! obtengo los items de artistas
                     // console.log(res.json().artists.items);
                     this.artistas = res.json().artists.items;
                     console.log(this.artistas);
@@ -39,4 +38,27 @@ export class SpotifyService {
 
     }
 
+    // obtener el artista
+    getArtista(id:string) {
+        // la consulta
+        let query = `/${id}`;
+        // url del api rest para el artista
+        let url = this.urlSpotifyArtist + query;
+
+        return this._http.get( url )
+            .map( res => {
+                console.log(res.json());
+                // convierto en json el arreglo que obtengo.
+                return res.json();
+            })
+    }
+
 }
+
+// DOCUMENTATION
+// - importar utilizando el http y rxjs (para los observables)
+// - api rest: ejemplo de spotify
+// https://api.spotify.com/v1/search?q=nombre_interprete&type=artist
+// - separar la url en la sección principal y la consulta.
+// - las funciones reciben un valor que es el que sirve en la query
+// y devuelven un mapeo con respuesta correcta y error.
