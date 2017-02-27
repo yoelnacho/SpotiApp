@@ -1,3 +1,29 @@
-<p>
-  search works!
-</p>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3">
+            <label for="termino">Buscador de artista</label>
+
+            <!-- name tiene que ser igual al nombre del ngModel -->
+            <input [(ngModel)]="termino"
+                (keyup.enter)="searchArtist($event)"
+                type="text"
+                name="termino"
+                class="form-control"
+                placeholder="Nombre del artista">
+        </div>
+        <div class="col-md-9">
+
+            <div class="row">
+                <div class="col-md-3" *ngFor="let artista of _spotifyService.artistas">
+
+                    <!-- si existe la url mostrar image -->
+                    <img [src]="artista.images[1]?.url"
+                        alt="{{ artista.name }}"
+                        class="img-fluid img-thumbnail">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
