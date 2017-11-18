@@ -1,7 +1,17 @@
+<div class="row" *ngIf="artista">
+    <div class="col-md-3 text-center">
+        <img [src]="artista.images | sinfoto" class="img-thumbnail img-circle">
+    </div>
+</div>
 <h1>
   artista: <strong>Nombre de artista</strong>
+
 </h1>
 
-<pre>
-    {{ artista | json }}
-</pre>
+<h4>Top tracks EEUU</h4>
+<ul>
+    <li *ngFor="let tracks of pistas">
+        <img width="120" [src]="tracks.album.images[0].url" class="img-thumbnail rounded">
+        {{ tracks.name }}
+    </li>
+</ul>

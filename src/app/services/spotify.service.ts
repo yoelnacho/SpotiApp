@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 // para observable
 import { Http } from '@angular/http';
-import 'rxjs';
+import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class SpotifyService {
+
     artistas: any[] = [];
+
     urlSpotify:string = "https://api.spotify.com/v1/search";
     urlSpotifyArtist:string = "https://api.spotify.com/v1/artists";
 
@@ -17,7 +19,7 @@ export class SpotifyService {
     // la primera parte se encuentra en urlSpotify y la consulta en query
     getArtistas(termino: string) {
         // creo los parámetros de búqeda
-        let query = `?q=${termino}&type=artist`;
+        let query = `?q=${ termino }&type=artist`;
         // concateno la url con la consulta
         let url = this.urlSpotify + query;
 
@@ -31,9 +33,9 @@ export class SpotifyService {
                 // de todo el arreglo, solo! obtengo los items de artistas
                     // console.log(res.json().artists.items);
                     this.artistas = res.json().artists.items;
-                    console.log(this.artistas);
+                    // console.log(this.artistas);
 
-                    return res.json().artists.items;
+                    // return res.json().artists.items;
                 })
 
     }
@@ -41,18 +43,29 @@ export class SpotifyService {
     // obtener el artista
     getArtista(id:string) {
         // la consulta
-        let query = `/${id}`;
+        let query = `/${ id }`;
         // url del api rest para el artista
         let url = this.urlSpotifyArtist + query;
 
         return this._http.get( url )
             .map( res => {
-                console.log(res.json());
                 // convierto en json el arreglo que obtengo.
+                console.log(res.json());
                 return res.json();
             })
     }
 
+    // top track by country
+    getTop(id:string) {
+        let query = `/${id}/top-tracks?country=US`;
+        let url = this.urlSpotifyArtist + query;
+
+        return this._http.get( url )
+            .map( res => {
+                console.log(res.json().tracks);
+                return res.json().tracks;
+            })
+    }
 }
 
 // DOCUMENTATION
